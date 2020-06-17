@@ -1,0 +1,58 @@
+﻿@model EmployeeViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<h3 class="mt-3">Edit Employee</h3>
+<form method="post" asp-controller="employee" asp-action="edit" class="mt-3" novalidate>
+    <input hidden asp-for="Id"/>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" asp-for="Name"></label>
+        <div class="col-sm-10">
+            <input class="form-control" asp-for="Name" placeholder="Name" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" asp-for="Email"></label>
+        <div class="col-sm-10">
+            <input class="form-control" asp-for="Email" placeholder="Email" />
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" asp-for="Telephone"></label>
+        <div class="col-sm-10">
+            <input class="form-control" asp-for="Telephone" placeholder="Name" />
+            <span class="text-danger" asp-validation-for="Telephone"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Gender" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input value="Male" asp-for="Gender" type="radio" />Male
+            <input value="Female" asp-for="Gender" type="radio" />Female
+            <span class="text-danger" asp-validation-for="Gender"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="DepartmentId" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="DepartmentId" asp-items="@(IEnumerable<SelectListItem>)ViewBag.Departments">
+                <option value="">Please select</option>
+                @*<option selected value="@Model.DepartmentId">@Model.Department.Name</option>*@
+            </select>
+            <span asp-validation-for="DepartmentId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Agree" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input class="form-check-input" asp-for="Agree" type="checkbox" />
+            <span asp-validation-for="Agree" class="text-danger"></span>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Update</button>
+    <button class="btn btn-primary" type="reset">Cancel</button>
+</form>
+
